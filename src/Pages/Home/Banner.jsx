@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { easeOut, motion } from "motion/react"
 import team from "../../assets/team/team1.jpg"
 import team2 from "../../assets/team/team2.jpg"
@@ -5,7 +6,7 @@ import team2 from "../../assets/team/team2.jpg"
 const Banner = () => {
     return (
         <div>
-            <div className="hero bg-base-200 min-h-96 my-20">
+            <div className="hero bg-base-200 min-h-96 my-20 overflow-x-hidden">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                    <div className="flex-1">
                      <motion.img

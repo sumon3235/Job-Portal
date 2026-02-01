@@ -2,6 +2,7 @@ import Lottie from 'lottie-react';
 import registerLottieData from '../../assets/Lottie-animation/Login Leady.json'
 import { useContext, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
+import SocialLogin from '../Sharged/SocialLogin';
 
 const Register = () => {
 
@@ -62,6 +63,9 @@ const Register = () => {
                                     <input type="password" className="input" name='password' placeholder="Password" autoComplete='new-password'/>
                                     <button className="btn btn-neutral mt-4">Register</button>
                                 </fieldset>
+                            </div>
+                            <div className='m-2 text-center'>
+                                <SocialLogin></SocialLogin>
                             </div>
                         {
                             error && <p className='font-semibold my-2 text-red-500 text-center'>{error}</p>
