@@ -3,10 +3,15 @@ import loginAnimation from '../assets/Lottie-animation/Login User.json'
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from 'react-router';
 
 const SignIn = () => {
 
     const { signInUser } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state || '/';
+
     const handleLoginData = e => {
         e.preventDefault();
         const form = e.target;
@@ -22,6 +27,7 @@ const SignIn = () => {
                     icon: 'success',
                     confirmButtonText: 'X'
                 })
+                navigate(from);
             })
             .catch(error => {
                 console.log(error)

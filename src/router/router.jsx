@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import Register from "../Pages/Register/Register";
 import SignIn from "../Pages/SignIn";
 import JobDetails from "../Pages/JobDetails";
+import PrivetRoute from "./PrivetRoute";
 
 
 const router = createBrowserRouter([
@@ -26,7 +27,9 @@ const router = createBrowserRouter([
             },
             {
                 path:"/jobs/:id",
-                element:<JobDetails></JobDetails>
+                element:<PrivetRoute><JobDetails></JobDetails></PrivetRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`),
+                hydrateFallbackElement: <p>Data is Loading</p>
             }
         ]
     },
