@@ -3,8 +3,13 @@ import registerLottieData from '../../assets/Lottie-animation/Login Leady.json'
 import { useContext, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
 import SocialLogin from '../Sharged/SocialLogin';
+import { useLocation, useNavigate } from 'react-router';
 
 const Register = () => {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state || '/';
 
     const [error, setError] = useState();
     const [success, setSuccess] = useState();
@@ -35,6 +40,7 @@ const Register = () => {
         .then(res => {
             console.log(res.user)
             setSuccess('User Registation Successfully');
+            navigate(from);
         })
         .catch(error => {
             console.log(error.message)
@@ -44,7 +50,7 @@ const Register = () => {
 
     return (
         <div>
-            <div className="hero bg-base-200 min-h-screen">
+            <div className="hero bg-base-200 min-h-[70vh]">
                 <div className="hero-content flex-col lg:flex-row-reverse gap-20">
                     <div className="text-center lg:text-left">
 
@@ -64,9 +70,7 @@ const Register = () => {
                                     <button className="btn btn-neutral mt-4">Register</button>
                                 </fieldset>
                             </div>
-                            <div className='m-2 text-center'>
-                                <SocialLogin></SocialLogin>
-                            </div>
+                
                         {
                             error && <p className='font-semibold my-2 text-red-500 text-center'>{error}</p>
                         }

@@ -1,11 +1,11 @@
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { CiCalendar, CiDollar, CiLocationOn, CiMail, CiUser } from "react-icons/ci";
 import { MdCategory, MdOutlineWorkOutline } from "react-icons/md";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 const JobDetails = () => {
 
-    const { title, location, jobType, category, applicationDeadline,
+    const {_id, title, location, jobType, category, applicationDeadline,
         salaryRange, description, company, requirements,
         responsibilities, hr_name, company_logo } = useLoaderData();
 
@@ -65,7 +65,7 @@ const JobDetails = () => {
                         <div>
                             <h3 className="text-xl font-bold text-gray-800 mb-4 border-l-4 border-blue-500 pl-3">Responsibilities</h3>
                             <ul className="grid grid-cols-1 gap-3">
-                                {responsibilities.map((res, idx) => (
+                                {responsibilities?.map((res, idx) => (
                                     <li key={idx} className="flex items-start gap-2 text-gray-600">
                                         <AiOutlineSafetyCertificate className="mt-1 text-green-500 shrink-0" />
                                         <span>{res}</span>
@@ -94,9 +94,11 @@ const JobDetails = () => {
                         </div>
 
                         {/* Apply Button */}
-                        <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-200 transition-all transform hover:-translate-y-1 active:scale-95">
-                            Apply Now
-                        </button>
+                        <Link to={`/jobApply/${_id}`}>
+                            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-200 transition-all transform hover:-translate-y-1 active:scale-95">
+                                Apply Now
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,9 @@ const PrivetRoute = ({ children }) => {
 
 
     if(loading) {
-        return <span className="loading loading-bars loading-xl"></span>
+        return <div className="flex justify-center items-center md:my-40 my-72">
+            <span className="loading loading-bars loading-xl"></span>
+        </div>
     }
     if (user) {
         return children

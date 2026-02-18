@@ -7,14 +7,23 @@ import Swal from "sweetalert2";
 
 const Navber = () => {
 
-    // Dynamic Create NavLink
-    const links = <>
-        <NavLink>Item 1 </NavLink>
-        <NavLink>Item 3</NavLink>
-    </>
+    const navItmes = [
+        { name: "Home", path: "/" },
+        { name: "My Application", path: "/job-application" },
+        { name: "Add a Job", path: "/addjob"}
+    ]
+
+    const links = navItmes.map((item, idx) =>
+        <li key={idx}>
+            <NavLink to={item.path} className={({ isActive }) => isActive ? 'text-blue-600 font-medium' : "font-medium"}>
+                {item.name}
+            </NavLink>
+        </li>
+    )
 
     const { user, setUser, signOutUser } = useContext(AuthContext);
 
+    // Singout User 
     const handleSignOutUser = () => {
         signOutUser()
             .then(() => {
@@ -36,8 +45,8 @@ const Navber = () => {
             })
     }
     return (
-        <div className="container mx-auto">
-            <div className="navbar">
+        <nav className="sticky top-0 bg-base-300 z-10">
+            <div className="navbar px-5 md:px-20 lg:px-40 py-6">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,7 +64,7 @@ const Navber = () => {
 
                     </Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
+                <div className="navbar-center hidden lg:flex gap-2">
                     <ul className="menu menu-horizontal px-1">
                         {links}
                     </ul>
@@ -64,14 +73,14 @@ const Navber = () => {
 
                     {
                         user ? <>
-                        <button className="btn" onClick={handleSignOutUser}>Sign Out</button></> : 
-                        <> <NavLink to={"/register"}>Register</NavLink>
-                         <NavLink to="/signin">Login</NavLink>
-                        </>
+                            <button className="btn" onClick={handleSignOutUser}>Sign Out</button></> :
+                            <> <NavLink to={"/register"}>Register</NavLink>
+                                <NavLink to="/signin">Login</NavLink>
+                            </>
                     }
                 </div>
             </div>
-        </div>
+        </nav>
     );
 };
 export default Navber;
