@@ -3,7 +3,7 @@
 A modern, responsive, and secure job management application built with the MERN stack (React & Firebase focus). This project allows users to browse, post, and manage job applications with real-time authentication.
 
 ## 🔗 Live Demo
-[Check out the Live App](YOUR_VERCEL_OR_NETLIFY_LINK_HERE)
+[Check out the Live App](https://job-portal-11371.web.app/)
 
 ## ✨ Key Features
 * **User Authentication:** Secure login/signup using **Firebase Authentication**.
